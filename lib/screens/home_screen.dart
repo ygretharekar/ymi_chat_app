@@ -1,19 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ymi_chat_app/constants/custom_color.dart';
+import 'package:ymi_chat_app/controllers/user_controller.dart';
+import 'package:ymi_chat_app/models/user.dart';
 import 'package:ymi_chat_app/screens/chats.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   final String title;
 
@@ -28,6 +22,7 @@ class _MyHomePageState extends State<MyHomePage>
 
   Map<String, String> creds = {};
   String errorMSG = "";
+  static Firestore fireStore = Firestore.instance;
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -35,10 +30,14 @@ class _MyHomePageState extends State<MyHomePage>
   void initState() {
     _tabController = new TabController(length: 2, vsync: this);
     super.initState();
+    UserController.open();
 
     getUser().then(
         (user) {
           if(user != null) {
+
+            _saveUser(user);
+
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
@@ -48,6 +47,20 @@ class _MyHomePageState extends State<MyHomePage>
           }
         }
     );
+  }
+
+  _saveUser(FirebaseUser user) async {
+
+    DocumentReference documentReference =
+    fireStore.collection("users").document(user.email);
+
+    var data = await documentReference.get();
+    if (data.data == null) {
+      print(data.data);
+
+      Map json = User.fromNamed(email: user.email, id: user.email.split("@")[0],  isActive: true).toJson();
+      documentReference.setData(json);
+    }
   }
 
   void setCreds(String type, String value) {

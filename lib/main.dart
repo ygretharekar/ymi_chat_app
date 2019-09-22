@@ -3,6 +3,7 @@ import 'package:ymi_chat_app/constants/custom_color.dart';
 import 'package:ymi_chat_app/screens/chats.dart';
 import 'package:ymi_chat_app/screens/home_screen.dart';
 
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {

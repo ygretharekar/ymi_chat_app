@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "914524842156",
+    "firebase_url": "https://ymi-chat-app.firebaseio.com",
+    "project_id": "ymi-chat-app",
+    "storage_bucket": "ymi-chat-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:914524842156:android:9ca51bf92f2ace340c5709",
+        "android_client_info": {
+          "package_name": "com.example.ymi_chat_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "914524842156-jscdmh5k351uc09qkhsn94cifuainflo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ymi_chat_app",
+            "certificate_hash": "a6d4458bd67cc41838173bda9865c0100e42c935"
+          }
+        },
+        {
+          "client_id": "914524842156-anjvm77ma7csei9d6od7du9goh8ph1mc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxkwV9OxLvw1K0lDekMYe-yBdss0fi7hY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "914524842156-anjvm77ma7csei9d6od7du9goh8ph1mc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
